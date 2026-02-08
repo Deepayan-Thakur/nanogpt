@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 
 export default function MainLayout() {
-  
+
   // Helper to apply classes based on active state
   const navLinkClasses = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
@@ -12,7 +12,7 @@ export default function MainLayout() {
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-gray-900 text-gray-100">
-      
+
       {/* Sidebar */}
       <aside className="w-64 flex-shrink-0 border-r border-gray-800 bg-gray-900 flex flex-col">
         {/* Header */}
@@ -22,22 +22,32 @@ export default function MainLayout() {
           </h1>
         </div>
 
-        {/* Navigation */}
+        {/* Navigation Wrapper (Added flex-1 to push footer down) */}
         <nav className="flex-1 px-4 py-6 space-y-2">
+          
+          {/* 1. Dashboard Link (Restored) */}
           <NavLink to="/" className={navLinkClasses} end>
             <span className="font-medium">Dashboard</span>
           </NavLink>
-          
+
+          {/* 2. Training Link */}
           <NavLink to="/train" className={navLinkClasses}>
             <span className="font-medium">Training</span>
           </NavLink>
-          
+
+          {/* 3. Playground Link */}
+          <NavLink to="/playground" className={navLinkClasses}>
+            <span className="font-medium">Playground</span>
+          </NavLink>
+
+          {/* 4. Logs Link */}
           <NavLink to="/logs" className={navLinkClasses}>
             <span className="font-medium">System Logs</span>
           </NavLink>
+
         </nav>
 
-        {/* Footer / User Profile Placeholder */}
+        {/* Footer / User Profile */}
         <div className="p-4 border-t border-gray-800">
           <div className="flex items-center gap-3 px-2">
             <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-xs font-bold text-gray-400">

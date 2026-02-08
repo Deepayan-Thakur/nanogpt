@@ -3,22 +3,24 @@ import MainLayout from './layouts/MainLayout';
 import Dashboard from './pages/Dashboard';
 import Train from './pages/Train';
 import Logs from './pages/Logs';
+import Playground from './pages/Playground'; // Ensure this matches your file name
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Layout Wrapper */}
+        {/* Main Layout wraps all pages so Sidebar is always visible */}
         <Route path="/" element={<MainLayout />}>
           
-          {/* Default Path (Dashboard) */}
+          {/* Default Page (Dashboard) */}
           <Route index element={<Dashboard />} />
           
-          {/* Sub-pages */}
+          {/* Functional Pages */}
           <Route path="train" element={<Train />} />
           <Route path="logs" element={<Logs />} />
-
-          {/* Fallback for 404s */}
+          <Route path="playground" element={<Playground />} /> 
+          
+          {/* Catch-all: Redirect unknown URLs to Dashboard */}
           <Route path="*" element={<Navigate to="/" replace />} />
           
         </Route>
